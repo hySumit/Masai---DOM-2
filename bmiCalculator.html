@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+        }
+
+        h1 {
+            font-size: 3em;
+        }
+
+        p {
+            font-size: 22px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>Check your BMI</h1>
+        <p>Enter your weight and height below to check your BMI results</p>
+        <p>Put your weight in here <b>(KG)</b></p>
+        <input id="1st" type="number">
+
+        <p>And your height in here <b>(CM)</b></p>
+        <input id="2nd" type="number" >
+        <br>
+        <button id="btn" onclick="calculate()">Calculate BMI</button>
+        <p id="result">Your Result Will Display Here</p>
+    </div>
+</body>
+<script>
+    function calculate() {
+        let weight = document.getElementById("1st").value
+        let height = document.getElementById("2nd").value
+        let result = document.getElementById("result")
+        // let title = document.getElementById("title")
+        if (weight && height) {
+            let bmi = (weight) / (height * height) * 10000
+            let res = bmi.toFixed(2)
+
+            if (res >= 30) {
+                result.innerText = `Your BMI is ${res} Which means You are Obese`
+            }
+            else if (res >= 25 && res <= 29.9) {
+                result.innerText = `Your BMI is ${res} Which means You are OverWeight`
+            }
+            else if (res >= 18.5 && res <= 24.9) {
+                result.innerText = `Your BMI is ${res} Which means You are Normal Weight`
+            }
+            else if (res <= 18.4) {
+                result.innerText = `Your BMI is ${res} Which means You are UnderWeight`
+            }
+
+        }
+        else {
+            result.innerText = ("Enter Both Values")
+            
+        }
+
+        // console.log(res)
+
+
+
+
+
+
+
+        //         UnderWeight - bmi <= 18.4
+        // Normal Weight - bmi >= 18.5 && bmi <= 24.9
+        // Overweight - bmi >= 25 && bmi <= 29.9
+        // Obese - bmi >= 30
+    }
+</script>
+
+</html>
+
+<!-- Here is the formula for manually calculating BMI  BMI = (weight) / (height * height) -->
